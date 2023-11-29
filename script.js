@@ -1,6 +1,5 @@
 /*TO DO:
 - playRound function for BO5
-- make playerSelection case-insensitive
 - add context to consolelog for better readability
 - do not accept othen than rock paper scissors */
 
@@ -24,29 +23,29 @@ function getComputerChoice(computerChoice){
 
 }
 
-function playRound(playerSelection, computerChoice, result) {
-    if (playerSelection == computerChoice) {
-        return result = 'its a draw!';
-    } else if ((playerSelection === 'Rock' && computerChoice === 'Scissors') || (playerSelection === 'Scissors' && computerChoice === 'Paper') || (playerSelection === 'Paper' && computerChoice === 'Rock')) {
-        return result = 'Congrats, you won!';
+function checkPlayerSelection(playerSelection) {
+    playerSelection = playerSelection.toLowerCase();
+    if (playerSelection === 'rock' || playerSelection === 'paper' || playerSelection === 'scissors') {
+     let firsLetter = playerSelection.slice(0, 1);
+     let remaining = playerSelection.slice(1);
+     let format = firsLetter.toUpperCase();
+     return formatPlayerSelection = format + remaining;
     } else {
-        return result = 'You lose, try again!';
+     return formatPlayerSelection = 'Choose a real play!';
     }
 }
 
-function checkPlayerSelection(playerSelection) {
-   playerSelection = playerSelection.toLowerCase();
-   if (playerSelection === 'rock' || playerSelection === 'paper' || playerSelection === 'scissors') {
-    let firsLetter = playerSelection.slice(0, 1);
-    let remaining = playerSelection.slice(1);
-    let format = firsLetter.toUpperCase();
-    return playerSelection = format + remaining;
-   } else {
-    return 'Choose a real play!';
-   }
+function playRound(formatPlayerSelection, computerChoice, result) {
+    if (formatPlayerSelection === computerChoice) {
+        return result = 'its a draw!';
+    } else if ((formatPlayerSelection === 'Rock' && computerChoice === 'Scissors') || (formatPlayerSelection === 'Scissors' && computerChoice === 'Paper') || (formatPlayerSelection === 'Paper' && computerChoice === 'Rock')) {
+        return result = 'Congrats, you won!';
+    } else {
+        return result = 'Try again!';
+    }
 }
 
 console.log(computerChoice);
-console.log(playerSelection);
+/*console.log(playerSelection);*/
 console.log(checkPlayerSelection(playerSelection));
-/*console.log(playRound(playerSelection, computerChoice));*/
+console.log(playRound(formatPlayerSelection, computerChoice, result));
