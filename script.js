@@ -47,7 +47,7 @@ function playRound(formatPlayerSelection, computerChoice, result) {
     }
 }
 
-console.log(computerChoice);
+console.log(`The computer played ${computerChoice}`);
 /*console.log(playerSelection);*/
-console.log(checkPlayerSelection(playerSelection));
+console.log(`You played ${checkPlayerSelection(playerSelection)}`);
 console.log(playRound(formatPlayerSelection, computerChoice, result));
