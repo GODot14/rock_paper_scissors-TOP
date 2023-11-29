@@ -1,7 +1,7 @@
 /*TO DO:
 - playRound function for BO5
 - add context to consolelog for better readability
-- do not accept othen than rock paper scissors */
+- do not accept other than rock paper scissors */
 
 let computerChoice = getComputerChoice();
 let playerSelection = window.prompt('What will you play?');
@@ -31,7 +31,7 @@ function checkPlayerSelection(playerSelection) {
      let format = firsLetter.toUpperCase();
      return formatPlayerSelection = format + remaining;
     } else {
-     return formatPlayerSelection = 'Choose a real play!';
+     return formatPlayerSelection = 'error';
     }
 }
 
@@ -40,8 +40,10 @@ function playRound(formatPlayerSelection, computerChoice, result) {
         return result = 'its a draw!';
     } else if ((formatPlayerSelection === 'Rock' && computerChoice === 'Scissors') || (formatPlayerSelection === 'Scissors' && computerChoice === 'Paper') || (formatPlayerSelection === 'Paper' && computerChoice === 'Rock')) {
         return result = 'Congrats, you won!';
+    } else if (formatPlayerSelection === 'error') {
+        return result = 'Choose a real play!';
     } else {
-        return result = 'Try again!';
+        return result = 'You lost, try again!';
     }
 }
 
