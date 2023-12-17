@@ -49,7 +49,7 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
-function game() {
+/*function game() {
     let draw = 0;
     let playerCount = 0;
     let computerCount = 0;
@@ -77,4 +77,4 @@ function game() {
     console.log(`You won ${playerCount} round. The computer won ${computerCount} round. You made ${draw} draw`);
 }
 
-game();
+game();*/
