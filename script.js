@@ -1,13 +1,31 @@
 const ENUM_CHOICE = {
     ROCK: 'Rock',
     PAPER: 'Paper',
-    SCISSORS: 'Scissors',
+    SCISSORS: 'Scissors'
 }
 const ENUM_STATUS = {
     DRAW: 'draw',
     WIN: 'win',
-    LOOSE: 'loose',
+    LOOSE: 'loose'
 }
+const buttons = document.querySelector('.buttons');
+let playerChoice = null;
+let computerChoice = null;
+const resultText = document.querySelector('.resultText');
+
+buttons.addEventListener('click', (button) => {
+    computerChoice = getComputerChoice();
+    playerChoice = button.target.id;
+    switch (playerChoice) {
+        case 'rock':
+            playerChoice = ENUM_CHOICE.ROCK;
+        case 'paper':
+            playerChoice = ENUM_CHOICE.PAPER;
+        case 'scissors':
+            playerChoice = ENUM_CHOICE.SCISSORS;
+        }
+    playRound(playerChoice, computerChoice);
+    })
 
 function getComputerChoice() {
     let random = Math.floor(Math.random() * 3);
@@ -21,31 +39,18 @@ function getComputerChoice() {
     }
 }
 
-function getPlayerChoice() {
-    let playerChoice = window.prompt('What will you play?');
-    playerChoice = playerChoice.toLowerCase();
-    switch (playerChoice) {
-        case 'rock':
-            return ENUM_CHOICE.ROCK;
-        case 'paper':
-            return ENUM_CHOICE.PAPER;
-        case 'scissors':
-            return ENUM_CHOICE.SCISSORS;
-        default:
-            console.log('Choose a real play!');
-            return getPlayerChoice();
-    }
-}
-
 function playRound(playerSelection, computerSelection) {
     if (playerSelection === computerSelection) {
-        return ENUM_STATUS.DRAW;
+        resultText.textContent = `You both played ${playerSelection}. It\'s a draw!`;
+        /*return ENUM_STATUS.DRAW;*/
     } else if ((playerSelection === ENUM_CHOICE.PAPER && computerSelection === ENUM_CHOICE.ROCK)
      || (playerSelection === ENUM_CHOICE.ROCK && computerSelection === ENUM_CHOICE.SCISSORS)
      || (playerSelection === ENUM_CHOICE.SCISSORS && computerSelection === ENUM_CHOICE.PAPER)) {
-        return ENUM_STATUS.WIN;
+         resultText.textContent = `You played ${playerSelection} and the computer played ${computerChoice}. You win!`;
+         /*return ENUM_STATUS.WIN;*/
     } else {
-        return ENUM_STATUS.LOOSE;
+        resultText.textContent = `You played ${playerSelection} and the computer played ${computerChoice}. You loose!`;
+        /*return ENUM_STATUS.LOOSE;*/
     }
 }
 
