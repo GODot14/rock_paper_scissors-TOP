@@ -10,6 +10,7 @@ const ENUM_STATUS = {
 }
 const buttons = document.querySelector('.buttons');
 const resultText = document.querySelector('.resultText');
+const scoreText = document.querySelector('.score');
 
 let playerChoice = null;
 let computerChoice = null;
@@ -77,5 +78,5 @@ function game(status) {
     }
 
     totalCount = computerCount + playerCount + draw;
-    console.log(`You won ${playerCount} round. The computer won ${computerCount} round. You made ${draw} draw`);
+    scoreText.textContent = `SCORE - Player: ${playerCount}  Computer: ${computerCount} - Draw: ${draw}`;
 }
