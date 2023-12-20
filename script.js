@@ -22,6 +22,10 @@ let computerChoice = null;
 let totalCount = 0;
 
 buttons.addEventListener('click', (button) => {
+    if (totalCount === 5) {
+        endGame();
+        return
+    }
     computerChoice = getComputerChoice();
     playerChoice = button.target.id;
     switch (playerChoice) {
@@ -80,5 +84,13 @@ function game(status) {
 }
 
 function endGame() {
-
+    let choice = confirm('Do you want to start a new game?');
+    if (choice === true) {
+        ENUM_COUNTERS.COMPUTER = 0;
+        ENUM_COUNTERS.DRAW = 0;
+        ENUM_COUNTERS.PLAYER = 0;
+        totalCount = 0;
+        scoreText.textContent = `SCORE - Player: ${ENUM_COUNTERS.PLAYER}  Computer: ${ENUM_COUNTERS.COMPUTER} - Draw: ${ENUM_COUNTERS.DRAW}`;
+        resultText.textContent = '';
+    }
 }
