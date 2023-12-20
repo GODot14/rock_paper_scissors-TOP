@@ -8,15 +8,17 @@ const ENUM_STATUS = {
     WIN: 'win',
     LOOSE: 'loose',
 }
+const ENUM_COUNTERS = {
+    PLAYER: 0,
+    COMPUTER: 0,
+    DRAW: 0,
+}
 const buttons = document.querySelector('.buttons');
 const resultText = document.querySelector('.resultText');
 const scoreText = document.querySelector('.score');
 
 let playerChoice = null;
 let computerChoice = null;
-let draw = 0;
-let playerCount = 0;
-let computerCount = 0;
 let totalCount = 0;
 
 buttons.addEventListener('click', (button) => {
@@ -67,16 +69,16 @@ function playRound(playerSelection, computerSelection) {
 
 function game(status) {
     if (status === ENUM_STATUS.DRAW) {
-        draw++;
-        console.log('It\'s a draw!');
+        ENUM_COUNTERS.DRAW++;
     } else if (status === ENUM_STATUS.WIN) {
-        playerCount++;
-        console.log('You win this round!');
+        ENUM_COUNTERS.PLAYER++;
     } else {
-        computerCount++;
-        console.log('You loose this round!');
+        ENUM_COUNTERS.COMPUTER++;
     }
+    totalCount = ENUM_COUNTERS.COMPUTER + ENUM_COUNTERS.DRAW + ENUM_COUNTERS.PLAYER;
+    scoreText.textContent = `SCORE - Player: ${ENUM_COUNTERS.PLAYER}  Computer: ${ENUM_COUNTERS.COMPUTER} - Draw: ${ENUM_COUNTERS.DRAW}`;
+}
 
-    totalCount = computerCount + playerCount + draw;
-    scoreText.textContent = `SCORE - Player: ${playerCount}  Computer: ${computerCount} - Draw: ${draw}`;
+function endGame() {
+
 }
